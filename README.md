@@ -6,7 +6,7 @@ Jelly go kill bug (not programming bug but real-er bug)
 
 주인공 젤리
 
-1. 능력
+# 1. 능력
 - 죽지 않음. 산산조각 나더라도 조각들이 스스로 움직여서 다시 재생됨
   
 - 몸에서 젤리를 고속으로 발사 가능(발사할때마다 최대체력 및 크기 감소, 쏘고 나서 바닥에 떨어진 젤리 먹으면 다시 늘어남)
@@ -15,7 +15,7 @@ Jelly go kill bug (not programming bug but real-er bug)
   
 - 자연에 있는 광물들을 먹고 특수능력 개화 가능
 
-2. 먹을 수 있는 광물
+# 2. 먹을 수 있는 광물
 
 ## 일반금속
 
@@ -38,7 +38,7 @@ Jelly go kill bug (not programming bug but real-er bug)
 우라늄 - 패시브. 주변 적에게 도트뎀(적 스탯 감소), 받는 피해 증가 - 액티브. 자폭(매우 강하다), 사용 시 자해딜 있음
 
 
-3. 장신구(패시브 추가)
+# 3. 장신구(패시브 추가)
 
 ## 보스 장신구
 
@@ -92,7 +92,7 @@ Jelly go kill bug (not programming bug but real-er bug)
 
 우라-늄 - 모든피해증가, 받는피해증가(광물 '우라늄' 섭취시 일정 확률로 획득)
 
-4. 적대세력 벌레
+# 4. 적대세력 벌레
 
 젤리들끼리 살고있던 젤리마을이 있었음.
 
