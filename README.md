@@ -48,7 +48,7 @@ Jelly go kill bug (not programming bug but real-er bug)
 
 사마귀의 팔 - 크리티컬 확률 및 피해 증가
 
-##잡몹 장신구
+## 잡몹 장신구
 
 공벌레의 갑각 - 방어력 소폭 증가
 
