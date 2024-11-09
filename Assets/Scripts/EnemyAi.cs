@@ -3,18 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+public class EnemyAi : MonoBehaviour
 {
+    public GameObject Target;
+
     public float MaxVelocity = 5;
     public float Acceraction = 1;
     public float Deceleration = .1f;
     public float JumpPower = 5;
     public float JumpHoldDuration = 0.5f;
     private Rigidbody2D body;
-    private SpriteRenderer spriteRenderer;
     private Animator animator;
     private BoxCollider2D box;
     private HealthComponent health;
+
+    private Weapon weapon;
 
     private float timeAfterJump;
 
@@ -26,10 +29,10 @@ public class Unit : MonoBehaviour
     {
         //Health = MaxHealth;
         body = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         box = GetComponent<BoxCollider2D>();
         health = GetComponent<HealthComponent>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        weapon = GetComponent<Weapon>();
 
         health.Health = health.MaxHealth;
     }
@@ -38,6 +41,13 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (health.Health == 0)
+        {
+            Destroy(gameObject);
+        }
+
+        weapon.Use(Target.transform.position);
+
         GroundCheck();
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -68,15 +78,13 @@ public class Unit : MonoBehaviour
 
         float veloX = 0;
 
-        if (Input.GetKey(KeyCode.A))
+        if (Target.transform.position.x < transform.position.x)
         {
             veloX -= Acceraction;
-            spriteRenderer.flipX = true;
         }
-        if (Input.GetKey(KeyCode.D))
+        else
         {
             veloX +=  Acceraction;
-            spriteRenderer.flipX = false;
         }
 
         if (veloX == 0)
@@ -114,7 +122,7 @@ public class Unit : MonoBehaviour
         if(hit)
         {
             isGrounded = true;
-            animator.SetBool("isGrounded", true);
+            //animator.SetBool("isGrounded", true);
             if (isJumping && timeAfterJump != 0 && timeAfterJump > 0.1f)
             {
                 StopJumping();
@@ -123,7 +131,7 @@ public class Unit : MonoBehaviour
         else
         {
             isGrounded = false;
-            animator.SetBool("isGrounded", false);
+            //animator.SetBool("isGrounded", false);
         }
     }
 

@@ -13,9 +13,9 @@ public class JellyAttack : Weapon
         healthComponent = GetComponent<HealthComponent>();
     }
 
-    public override void Use()
+    public override bool Use(Vector3 globalMousePosition)
     {
         healthComponent.MaxHealth -= 1;
-        base.Use();
+        return base.Use(globalMousePosition);
     }
 }

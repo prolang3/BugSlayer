@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
     public float UseDelay;
     public float Damage;
 
-    private float cooldown;
+    private protected float cooldown;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -26,19 +26,19 @@ public class Weapon : MonoBehaviour
             cooldown += Time.deltaTime;
         }
 
-        if (Input.GetMouseButton(0) && cooldown >= UseDelay)
+        if (Input.GetMouseButton(0))
         {
-            Use();
-            cooldown = 0;
+            Use(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
     }
 
-    public virtual void Use()
+    public virtual bool Use(Vector3 globalMousePosition)
     {
-        
+        if (cooldown < UseDelay) {return false;}
+        cooldown = 0;
         if (Bullet != null)
         {
-            var globalMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            
             globalMousePosition.z = 0;
             var diff = globalMousePosition - transform.position;
             diff.Normalize();
@@ -47,6 +47,7 @@ public class Weapon : MonoBehaviour
             var rot = quaternion.Euler(0, 0, rotZ);
 
             var newBullet = Instantiate<GameObject>(Bullet);
+            newBullet.GetComponent<Projectile>().CreatorTag = gameObject.tag;
             newBullet.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(0, 0, rotZ));
         }
         
@@ -64,5 +65,7 @@ public class Weapon : MonoBehaviour
             }
         }
         */
+
+        return true;
     }
 }
