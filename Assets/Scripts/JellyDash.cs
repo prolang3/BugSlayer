@@ -101,7 +101,7 @@ public class JellyDash : MonoBehaviour
             rb.MovePosition(newPosition);
 
             dashDistance -= moveDistance;
-            if (dashDistance <= 0)
+            if (dashDistance <= 0f)
             {
                 isDashing = false;
                 Debug.Log("Dash Ended");
